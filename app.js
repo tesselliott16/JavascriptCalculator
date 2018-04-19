@@ -72,10 +72,12 @@ myApp.controller('CalculatorController', ['$scope', function($scope) {
   }
   $scope.neg = function() {
     $scope.lastValue = (0 - $scope.output);
+    $scope.runningTotal = $scope.lastValue;
     $scope.output = $scope.lastValue;
   }
   $scope.recall = function(oldVal) {
     $scope.runningTotal = oldVal;
+    $scope.lastValue = oldVal;
     $scope.output = $scope.runningTotal;
   }
   $scope.calc = function() {
