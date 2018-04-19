@@ -9,4 +9,4 @@ To initialize:
 2. Run npm install to ensure all packages are available
 3. Run npm start
 
-The npm start command will run live-server, which will open the project files in a browser. If desired, project can be opened via another device by using the hosting computer's ip address appended with :8080, i.e. 192.16.5.1:8080. This allows for cross-platform testing.
+The npm start command will run live-server, which will open a browser running the project. If desired, project can be opened via another device by using the hosting computer's ip address appended with :8080, i.e. 192.16.5.1:8080. This allows for cross-platform testing.
