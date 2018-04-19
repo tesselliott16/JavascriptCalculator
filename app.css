@@ -2,6 +2,7 @@ html {
   background: #0c3e5e;
   background-image: url("GradientCalculatorBackground.jpg");
   background-repeat: no-repeat;
+  background-attachment: fixed;
   background-position: right top;
 }
 
