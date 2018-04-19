@@ -1,6 +1,8 @@
 # JavascriptCalculator
 AngularJS Calculator
 
+To access a functional version of this AngularJS Calculator, clone repository.
+
 To initialize:
 
 1. Open command prompt in project folder i.e. Projects/JavascriptCalculator
