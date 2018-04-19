@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="app.css">
+    <script src="./node_modules/angular/angular.min.js"></script>
+    <script src="app.js"></script>
+    <title>Javascript Calculator</title>
+  </head>
+  <body>
+    <div ng-app="calculator" ng-controller="CalculatorController" class="container col-md-4 col-md-offset-4">
+      <h1>Javascript Calculator</h1>
+        <br /><br />
+      <div class="calculator">
+        <div class="calcbuttons">
+          <div class="row" id="top">
+            <div class="col-xs-3">
+              <button class="btn btn-primary-spacing buttonCalc" id="clear" ng-click='clear()'>C</button>
+            </div>
+            <div class="col-xs-3">
+              <button class="btn btn-primary-spacing buttonCalc" ng-click='neg()'>(-)</button>
+            </div>
+            <div id="output" class="col-xs-6 viewer">{{output}}</div>
+          </div>
+          <div class="row" id = "second">
+            <div class="col-xs-3">
+              <button class="btn btn-primary-spacing buttonCalc" ng-click='updateScreen(7)'>7</button>
+            </div>
+            <div class="col-xs-3">
+              <button class="btn btn-primary-spacing buttonCalc" ng-click='updateScreen(8)'>8</button>
+            </div>
+            <div class="col-xs-3">
+              <button class="btn btn-primary-spacing buttonCalc" ng-click='updateScreen(9)'>9</button>
+            </div>
+            <div class="col-xs-3">
+              <button class="btn btn-primary-spacing buttonCalc" ng-click='add()'>+</button>
+            </div>
+          </div>
+          <div class="row" id = "third">
+            <div class="col-xs-3">
+              <button class="btn btn-primary-spacing buttonCalc" ng-click='updateScreen(4)'>4</button>
+            </div>
+            <div class="col-xs-3">
+              <button class="btn btn-primary-spacing buttonCalc" ng-click='updateScreen(5)'>5</button>
+            </div>
+            <div class="col-xs-3">
+              <button class="btn btn-primary-spacing buttonCalc" ng-click='updateScreen(6)'>6</button>
+            </div>
+            <div class="col-xs-3">
+              <button class="btn btn-primary-spacing buttonCalc" ng-click='sub()'>-</button>
+            </div>
+          </div>
+          <div class="row" id = "forth">
+            <div class="col-xs-3">
+              <button class="btn btn-primary-spacing buttonCalc" ng-click='updateScreen(1)'>1</button>
+            </div>
+            <div class="col-xs-3">
+              <button class="btn btn-primary-spacing buttonCalc" ng-click='updateScreen(2)'>2</button>
+            </div>
+            <div class="col-xs-3">
+              <button class="btn btn-primary-spacing buttonCalc" ng-click='updateScreen(3)'>3</button>
+            </div>
+            <div class="col-xs-3">
+              <button class="btn btn-primary-spacing buttonCalc" ng-click='mult()'>*</button>
+            </div>
+          <div class="row" id = "second">
+          </div>
+          <div class="col-xs-3">
+            <button class="btn btn-primary-spacing buttonCalc" ng-click='updateScreen(0)'>0</button>
+          </div>
+          <div class="col-xs-3">
+            <button class="btn btn-primary-spacing buttonCalc" ng-click='updateScreen(".")'>.</button>
+          </div>
+          <div class="col-xs-3">
+            <button class="btn btn-primary-spacing buttonCalc" ng-click='calc()'>=</button>
+          </div>
+          <div class="col-xs-3">
+            <button class="btn btn-primary-spacing buttonCalc" ng-click='div()'>/</button>
+          </div>
+          </div>
+        </div><br /><br />
+        <div>
+          <div class="col-xs-12">
+            <h3>History</h3>
+            <div>
+              <button class="histList btn" ng-repeat="hist in history" ng-click="recall(hist.total)">{{hist.string}}</button>
+            </div>
+            <div>
+              <button class="btn buttonHistory" ng-click="clearHist()">Clear History</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

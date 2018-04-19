@@ -1,0 +1,85 @@
+html {
+  background: #0c3e5e;
+  background-image: url("GradientCalculatorBackground.jpg");
+  background-repeat: no-repeat;
+  background-position: right top;
+}
+
+body {
+  color: inherit;
+  font: 300 24px/1.6 "Roboto", sans-serif;
+  background: 0%;
+}
+
+ul {
+  list-style-type: none;
+}
+
+button {
+  background-color: #bedbdb;
+  &:focus {
+    outline: 0; // Better check accessibility
+
+    /* The value fade-ins that appear */
+    &::after {
+      animation: zoom 1s;
+      animation-iteration-count: 1;
+      animation-fill-mode: both; // Fix Firefox from firing animations only once
+      cursor: default;
+      opacity: 0;
+    }
+  }
+}
+h1 {
+  color: #bedbdb;
+  text-align: center;
+}
+
+h3 {
+  color: #bedbdb;
+}
+.container {
+  max-width: 500px;
+  padding: 0 auto;
+}
+.buttonCalc {
+  min-width: 30px;
+  opacity: 0.4;
+  color: #010c0e;
+  background-color: #bedbdb;
+  font-size: 16pt;
+  line-height: 3em;
+  text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  /* padding: 2px; */
+}
+.buttonHistory {
+  color: #010c0e;
+  opacity: 0.4;
+  background-color: #bedbdb;
+  font-weight:bold;
+  line-height: 1em;
+  text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 105%;
+}
+.btn-primary-spacing {
+  width: 125%;
+  margin: 2px;
+}
+.viewer {
+  color: #bedbdb;
+  float: left;
+  text-align: right;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.histList {
+  color:#bedbdb;
+  text-align: center;
+  font-size: 14pt;
+  width: 100%;
+  background: Transparent;
+}
