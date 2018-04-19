@@ -76,7 +76,9 @@ myApp.controller('CalculatorController', ['$scope', function($scope) {
     $scope.output = $scope.lastValue;
   }
   $scope.recall = function(oldVal) {
-    $scope.runningTotal = oldVal;
+    if($scope.usePreviousCalc){
+      $scope.runningTotal = oldVal;
+    }
     $scope.lastValue = oldVal;
     $scope.output = $scope.runningTotal;
   }
