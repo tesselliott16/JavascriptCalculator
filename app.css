@@ -52,7 +52,7 @@ h3 {
   opacity: 0.4;
   color: #010c0e;
   background-color: #bedbdb;
-  font-size: 16pt;
+  font-size: 20pt;
   line-height: 3em;
   text-align: center;
   text-overflow: ellipsis;
@@ -88,4 +88,7 @@ h3 {
   width: 100%;
   opacity: 0.75;
   background: Transparent;
+}
+.histList:hover,.histList:focus {
+  color: #4a6d6c
 }
