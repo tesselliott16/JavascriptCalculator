@@ -84,7 +84,7 @@
           <div class="col-xs-12">
             <h3>History</h3>
             <div>
-              <button class="histList btn" ng-repeat="hist in history" ng-click="recall(hist.total)">{{hist.string}}</button>
+              <button class="histList btn" ng-repeat="hist in history track by $index" ng-click="recall(hist.total)">{{hist.string}}</button>
             </div>
             <div>
               <button class="btn buttonHistory" ng-click="clearHist()">Clear History</button>

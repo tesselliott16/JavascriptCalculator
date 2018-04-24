@@ -47,28 +47,28 @@ myApp.controller('CalculatorController', ['$scope', function($scope) {
     if (!$scope.usePreviousCalc){
       $scope.runningTotal = $scope.lastValue;
     }
-    $scope.output = 0;
+    $scope.newNumber = true
   }
   $scope.sub = function() {
     $scope.operator = SUB;
     if (!$scope.usePreviousCalc){
       $scope.runningTotal = $scope.lastValue;
     }
-    $scope.output = 0;
+    $scope.newNumber = true
   }
   $scope.mult = function() {
     $scope.operator = MULT;
     if (!$scope.usePreviousCalc){
       $scope.runningTotal = $scope.lastValue;
     }
-    $scope.output = 0;
+    $scope.newNumber = true
   }
   $scope.div = function () {
     $scope.operator = DIV;
-    if (!$scope.usePreviousCalc){
+    if ($scope.usePreviousCalc){
       $scope.runningTotal = $scope.lastValue;
     }
-    $scope.output = 0;
+    $scope.newNumber = true
   }
   $scope.neg = function() {
     $scope.lastValue = (0 - $scope.output);
@@ -76,7 +76,7 @@ myApp.controller('CalculatorController', ['$scope', function($scope) {
     $scope.output = $scope.lastValue;
   }
   $scope.recall = function(oldVal) {
-    if($scope.usePreviousCalc){
+    if(!$scope.usePreviousCalc){
       $scope.runningTotal = oldVal;
     }
     $scope.lastValue = oldVal;
@@ -94,14 +94,30 @@ myApp.controller('CalculatorController', ['$scope', function($scope) {
       } else if ($scope.runningTotal && $scope.operator == MULT) {
         $scope.runningTotal *= $scope.lastValue;
       } else if ($scope.runningTotal && $scope.operator == DIV) {
-        $scope.runningTotal /= $scope.lastValue;
+        if ($scope.lastValue != 0) {
+          $scope.runningTotal /= $scope.lastValue;
+        }
+        else {
+          $scope.output = "Error, don't divide by zero!"
+          $scope.runningTotal = null;
+          $scope.operator = null;
+          $scope.lastValue = null;
+          $scope.currentTotal = null;
+          $scope.previousCalc = null;
+          $scope.newNumber = true;
+        }
       } else (
         $scope.runningTotal = $scope.lastValue
       )
     }
     if($scope.operator !== null){
       var temp = {string: oldVal + " " + $scope.operator + " " + $scope.lastValue + " = " + $scope.runningTotal, total: $scope.runningTotal};
-      $scope.history.unshift(temp);
+      if($scope.history.length > 8) {
+        $scope.history.splice(8, 1);
+        $scope.history.unshift(temp);
+      } else {
+        $scope.history.unshift(temp);
+      }
     }
     $scope.output = $scope.runningTotal;
     $scope.previousCalc = $scope.runningTotal;

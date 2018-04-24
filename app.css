@@ -39,6 +39,10 @@ h1 {
 h3 {
   color: #bedbdb;
 }
+
+@media screen and (min-width: 350px) {
+  #main {margin: 15px;}
+}
 .container {
   max-width: 500px;
   padding: 0 auto;
