@@ -8,7 +8,7 @@ var myApp = angular.module('calculator', []);
 
 myApp.controller('CalculatorController', ['$scope', function($scope) {
   //inital value
-  $scope.output = 0;
+  $scope.output = "0";
   //if the number was the first number input
   $scope.newNumber = true;
   //if the button selected was an operator (plus, minus, etc.)
@@ -32,9 +32,12 @@ myApp.controller('CalculatorController', ['$scope', function($scope) {
   //sets the output to the new number string, then adds the number value of our
   //new number to the current total
   $scope.updateScreen = function(btn) {
-    if ($scope.output == "0" || $scope.newNumber || $scope.usePreviousCalc) {
+    if ($scope.newNumber || $scope.usePreviousCalc) {
+      // if ($scope.output == "0" || $scope.newNumber || $scope.usePreviousCalc) {
       $scope.output = btn;
       $scope.newNumber = false
+    } else if (btn == "." && $scope.lastValue.toString().indexOf(".") > -1) {
+      $scope.output = $scope.output;
     } else {
       $scope.output += String(btn);
     }
@@ -65,25 +68,27 @@ myApp.controller('CalculatorController', ['$scope', function($scope) {
   }
   $scope.div = function () {
     $scope.operator = DIV;
-    if ($scope.usePreviousCalc){
+    if (!$scope.usePreviousCalc){
       $scope.runningTotal = $scope.lastValue;
     }
     $scope.newNumber = true
   }
   $scope.neg = function() {
     $scope.lastValue = (0 - $scope.output);
-    $scope.runningTotal = $scope.lastValue;
+    if($scope.usePreviousCalc){
+      $scope.runningTotal = $scope.lastValue;
+    }
     $scope.output = $scope.lastValue;
   }
   $scope.recall = function(oldVal) {
-    if(!$scope.usePreviousCalc){
+    if($scope.usePreviousCalc){
       $scope.runningTotal = oldVal;
     }
     $scope.lastValue = oldVal;
     $scope.output = $scope.runningTotal;
   }
   $scope.calc = function() {
-    if($scope.lastValue) {
+    if(!isNaN($scope.lastValue)) {
       $scope.lastValue = parseFloat($scope.lastValue);
       $scope.runningTotal = parseFloat($scope.runningTotal);
       var oldVal = $scope.runningTotal;
@@ -105,11 +110,13 @@ myApp.controller('CalculatorController', ['$scope', function($scope) {
           $scope.currentTotal = null;
           $scope.previousCalc = null;
           $scope.newNumber = true;
+          return;
         }
       } else (
         $scope.runningTotal = $scope.lastValue
       )
     }
+    $scope.runningTotal = Math.round($scope.runningTotal*10000)/10000;
     if($scope.operator !== null){
       var temp = {string: oldVal + " " + $scope.operator + " " + $scope.lastValue + " = " + $scope.runningTotal, total: $scope.runningTotal};
       if($scope.history.length > 8) {
@@ -119,7 +126,7 @@ myApp.controller('CalculatorController', ['$scope', function($scope) {
         $scope.history.unshift(temp);
       }
     }
-    $scope.output = $scope.runningTotal;
+    $scope.output = Math.round($scope.runningTotal*1000000)/1000000;
     $scope.previousCalc = $scope.runningTotal;
     $scope.usePreviousCalc = true;
 
