@@ -49,10 +49,10 @@ h3 {
 }
 .buttonCalc {
   min-width: 30px;
-  opacity: 0.4;
+  opacity: 0.3;
   color: #010c0e;
   background-color: #bedbdb;
-  font-size: 20pt;
+  font-size: 22pt;
   line-height: 3em;
   text-align: center;
   text-overflow: ellipsis;
